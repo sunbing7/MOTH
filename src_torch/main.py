@@ -464,7 +464,7 @@ def moth():
 
 def test():
     model = get_model(args)
-    path = f'../ckpt/{args.dataset}_{args.model}_{args.suffix}.pt'
+    path = f'ckpt/{args.dataset}_{args.model}_{args.suffix}.pt'
     model.load_state_dict(torch.load(path))
     model.to(args.device)
     model.eval()
