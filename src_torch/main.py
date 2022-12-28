@@ -469,7 +469,7 @@ def test():
     model.to(args.device)
     model.eval()
 
-    test_loader = get_dataloader(args.dataset, True)
+    test_loader = get_dataloader(args.dataset, False)
 
     total   = 0
     correct = 0
