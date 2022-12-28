@@ -6,8 +6,8 @@ import torch
 from torchvision import datasets, models, transforms
 
 from dataset import CelebA_attr, GTSRB
-from network import resnet18
-
+#from network import resnet18
+from resnet_cifar import resnet18
 
 _mean = {
     'default':  [0.5   , 0.5   , 0.5   ],
