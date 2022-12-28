@@ -93,7 +93,7 @@ def get_size(dataset):
 
 def get_dataloader(dataset, train=True, ratio=1.0, batch_size=128):
     transforms_list = []
-    transforms_list.append(transforms.Resize(_size[dataset][:2]))
+    #transforms_list.append(transforms.Resize(_size[dataset][:2]))
     transforms_list.append(transforms.ToTensor())
     transforms_list.append(transforms.Normalize(_mean[dataset], _std[dataset]))
     transform = transforms.Compose(transforms_list)
