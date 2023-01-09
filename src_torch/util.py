@@ -110,7 +110,7 @@ def get_dataloader(dataset, train=True, ratio=1.0, batch_size=128):
     elif dataset == 'mnist':
         dataset = datasets.MNIST(data_root, train, transform, download=True)
     elif dataset == 'fmnist':
-        dataset = datasets.FMNIST(data_root, train, transform, download=True)
+        dataset = datasets.FashionMNIST(data_root, train, transform, download=True)
     elif dataset == 'cifar10':
         dataset = datasets.CIFAR10(data_root, train, transform, download=True)
     elif dataset == 'celeba':
