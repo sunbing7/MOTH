@@ -660,6 +660,9 @@ def show():
 ############                  main                  ############
 ################################################################
 def main():
+    if not os.path.exists('data/pair_count/'):
+        os.mkdir('data/pair_count/')
+
     if args.phase == 'moth':
         moth()
     elif args.phase == 'test':

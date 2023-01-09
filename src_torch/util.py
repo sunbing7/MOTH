@@ -8,6 +8,8 @@ from torchvision import datasets, models, transforms
 from dataset import CelebA_attr, GTSRB
 #from network import resnet18
 from resnet_cifar import resnet18
+from vgg_cifar import vgg11_bn
+from mobilenetv2 import MobileNetV2
 
 _mean = {
     'default':  [0.5   , 0.5   , 0.5   ],
@@ -123,8 +125,14 @@ def get_model(args):
             model = models.vgg16(pretrained=True)
         elif args.model == 'resnet50':
             model = models.resnet50(pretrained=True)
-    elif args.dataset in ['cifar10', 'gtsrb', 'celeba']:
+
+    if args.model == 'resnet18':
         model = resnet18()
+    elif args.model == 'vgg11_bn':
+        if args.dataset == 'gtsrb':
+            model = vgg11_bn(num_classes=43)
+    elif args.model == 'MobileNetV2':
+        model = MobileNetV2()
     return model
 
 
