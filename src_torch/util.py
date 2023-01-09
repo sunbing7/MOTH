@@ -5,7 +5,7 @@ import torch
 
 from torchvision import datasets, models, transforms
 
-from dataset import CelebA_attr, GTSRB
+from dataset import CelebA_attr, GTSRB, CustomGTSRBDataSet
 #from network import resnet18
 from resnet_cifar import resnet18
 from vgg_cifar import vgg11_bn
@@ -106,7 +106,7 @@ def get_dataloader(dataset, train=True, ratio=1.0, batch_size=128):
 
     data_root = './data'
     if dataset == 'gtsrb':
-        dataset = datasets.CIFAR10(data_root, train, transform, download=True)#GTSRB(data_root, train, transform)
+        dataset = CustomGTSRBDataSet(data_root, train, transform)
     elif dataset == 'mnist':
         dataset = datasets.MNIST(data_root, train, transform, download=True)
     elif dataset == 'fmnist':
