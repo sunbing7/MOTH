@@ -444,7 +444,7 @@ def moth():
                 sys.stdout.flush()
                 print('*'*120)
 
-                save_name = f'{args.dataset}_{args.model}_{args.suffix}_moth'
+                save_name = f'{args.dataset}_{args.model}_{args.suffix}_{args.lr}_moth'
                 np.save(f'data/pair_count/{save_name}', mat_count)
                 torch.save(model.state_dict(), f'ckpt/{save_name}.pt')
 
