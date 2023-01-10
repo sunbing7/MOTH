@@ -153,7 +153,7 @@ def pgd_attack(model, images, labels, mean, std,
 
     mean = mean.to(images.device)
     std  = std.to(images.device)
-
+    print('DEBUG images shape:{}'.format(images.shape))
     for i in range(iters):
         images.requires_grad = True
 
