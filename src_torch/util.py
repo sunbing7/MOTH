@@ -145,9 +145,9 @@ def get_model(args):
 def pgd_attack(model, images, labels, mean, std,
                eps=0.3, alpha=2/255, iters=40):
     loss = torch.nn.CrossEntropyLoss()
-    print('DEBUG images shape:{}'.format(images.shape))
+
     ori_images = images.data
-    print('DEBUG ori_images shape:{}'.format(ori_images.shape))
+
     images = images + 2 * (torch.rand_like(images) - 0.5) * eps
     images = torch.clamp(images, 0, 1)
 

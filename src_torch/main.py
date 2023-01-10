@@ -121,7 +121,7 @@ def moth():
     for epoch in range(args.epochs):
         for (x_batch, y_batch) in train_loader:
             x_batch = x_batch.to(args.device)
-
+            print('DEBUG x_batch shape:{}'.format(x_batch.shape))
             if args.type == 'nat':
                 x_adv = torch.clone(x_batch)
             elif args.type == 'adv':
