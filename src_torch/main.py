@@ -103,6 +103,8 @@ def moth():
             epsilon, k, a = 0.03, 8, 0.005
         elif args.dataset == 'lisa':
             epsilon, k, a = 0.1, 8, 0.02
+        elif args.dataset == 'fmnist':
+            epsilon, k, a = 8/255, 7, 2/255
 
     # hardening iterations
     max_warmup_steps = warmup_steps * num_classes
