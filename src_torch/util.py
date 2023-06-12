@@ -133,6 +133,12 @@ def get_dataloader(dataset, train=True, ratio=1.0, batch_size=128):
     elif dataset == 'mnistm':
         dataset = CustomMNISTMDataSet(data_root, train, transform)
     elif dataset == 'asl' or dataset == 'caltech':
+        if dataset == 'caltech':
+            transforms_list = []
+            transforms_list.append(transforms.ToTensor())
+            transforms.CenterCrop(size=224),
+            # transforms_list.append(transforms.Normalize(_mean[dataset], _std[dataset]))
+            transform = transforms.Compose(transforms_list)
         dataset = get_custom_folder(data_root + '/' + str(dataset), train, transform)
     else:
         raise Exception('Invalid dataset')
