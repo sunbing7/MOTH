@@ -70,6 +70,7 @@ def moth():
         size = np.count_nonzero(y_extra == i)
         if size < num_samples:
             num_samples = size
+            print('class {} has {}'.format(i, size))
     assert (num_samples > 0)
 
     indices = []
