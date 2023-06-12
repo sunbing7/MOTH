@@ -136,6 +136,7 @@ def get_dataloader(dataset, train=True, ratio=1.0, batch_size=128):
         if dataset == 'caltech':
             transforms_list = []
             transforms_list.append(transforms.ToTensor())
+            transforms.Resize(size=256),
             transforms.CenterCrop(size=224),
             # transforms_list.append(transforms.Normalize(_mean[dataset], _std[dataset]))
             transform = transforms.Compose(transforms_list)
