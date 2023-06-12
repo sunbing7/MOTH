@@ -117,6 +117,46 @@ class CustomGTSRBDataSet(data.Dataset):
         return image, label
 
 
+class CustomMNISTMDataSet(data.Dataset):
+    def __init__(self, data_file, is_train=False, transform=False):
+        self.transform = transform
+
+        f = h5py.File(data_file, 'r')
+        data = f['data']
+
+        if is_train:
+            xs = data['x_train'][:]
+            ys = data['y_train'][:]
+        else:
+            xs = data['x_test'][:]
+            ys = data['y_test'][:]
+
+        self.x = xs
+        self.y = ys
+
+    def __len__(self):
+        return len(self.x)
+
+    def __getitem__(self, idx):
+        image = self.x[idx]
+        label = self.y[idx]
+
+        if self.transform is not None:
+            image = self.transform(image)
+
+        return image, label
+
+
+def get_custom_folder(data_file, is_train, transform):
+
+    if is_train:
+        data = datasets.ImageFolder(root=data_file + '/train', transform=transform)
+    else:
+        data = datasets.ImageFolder(root=data_file + '/test', transform=transform)
+
+    return data
+
+
 def load_dataset_h5(data_filename, keys=None):
     ''' assume all datasets are numpy arrays '''
     dataset = {}

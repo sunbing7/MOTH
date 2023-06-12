@@ -5,39 +5,51 @@ import torch
 
 from torchvision import datasets, models, transforms
 
-from dataset import CelebA_attr, GTSRB, CustomGTSRBDataSet
+from dataset import CelebA_attr, GTSRB, CustomGTSRBDataSet, CustomMNISTMDataSet, get_custom_folder
 #from network import resnet18
 from resnet_cifar import resnet18, resnet50
 from vgg_cifar import vgg11_bn
 from mobilenetv2 import MobileNetV2
+from densenet import densenet
+from mobilenet import MobileNet
+from shufflenetv2 import shufflenetv2
 
 _mean = {
     'default':  [0.5   , 0.5   , 0.5   ],
     'mnist':    [0.5   , 0.5   , 0.5   ],
+    'mnistm':    [0.5   , 0.5   , 0.5   ],
     'fmnist':    [0.5],
     'cifar10':  [0.4914, 0.4822, 0.4465],
     'gtsrb':    [0.0   , 0.0   , 0.0   ],
     'celeba':   [0.0   , 0.0   , 0.0   ],
     'imagenet': [0.485 , 0.456 , 0.406 ],
+    'caltech': [0.485 , 0.456 , 0.406 ],
+    'asl': [0.485 , 0.456 , 0.406 ],
 }
 
 _std = {
     'default':  [0.5   , 0.5   , 0.5   ],
     'mnist':    [0.5   , 0.5   , 0.5   ],
+    'mnistm':    [0.5   , 0.5   , 0.5   ],
     'fmnist':    [0.5],
     'cifar10':  [0.2471, 0.2435, 0.2616],
     'gtsrb':    [1.0   , 1.0   , 1.0   ],
     'celeba':   [1.0   , 1.0   , 1.0   ],
     'imagenet': [0.229 , 0.224 , 0.225 ],
+    'caltech': [0.229 , 0.224 , 0.225 ],
+    'asl': [0.229 , 0.224 , 0.225 ],
 }
 
 _size = {
     'fmnist':    ( 28,  28, 1),
     'mnist':    ( 28,  28, 1),
+    'mnistm':  ( 32,  32, 3),
     'cifar10':  ( 32,  32, 3),
     'gtsrb':    ( 32,  32, 3),
     'celeba':   ( 64,  64, 3),
     'imagenet': (224, 224, 3),
+    'caltech': (224, 224, 3),
+    'asl': (200, 200, 3),
 }
 
 _num = {
@@ -115,6 +127,10 @@ def get_dataloader(dataset, train=True, ratio=1.0, batch_size=128):
         dataset = datasets.CIFAR10(data_root, train, transform, download=True)
     elif dataset == 'celeba':
         dataset = CelebA_attr(data_root, train, transform)
+    elif dataset == 'mnistm':
+        dataset = CustomMNISTMDataSet(data_root, train, transform)
+    elif dataset == 'asl' or dataset == 'caltech':
+        dataset = get_custom_folder(data_root, train, transform)
     else:
         raise Exception('Invalid dataset')
     if ratio < 1:
@@ -140,6 +156,12 @@ def get_model(args):
             model = vgg11_bn(num_classes=43)
     elif args.model == 'MobileNetV2':
         model = MobileNetV2()
+    elif args.model == 'MobileNet':
+        model = MobileNet(num_classes=29)
+    elif args.model == 'densenet':
+        model = densenet(num_classes=10)
+    elif args.model == 'shufflenetv2':
+        model = shufflenetv2(num_classes=101)
     return model
 
 
