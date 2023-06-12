@@ -55,10 +55,13 @@ _size = {
 _num = {
     'fmnist':    10,
     'mnist':    10,
+    'mnistm':    10,
     'cifar10':  10,
     'gtsrb':    43,
     'celeba':   8,
     'imagenet': 1000,
+    'asl': 29,
+    'caltech': 101,
 }
 
 
@@ -130,7 +133,7 @@ def get_dataloader(dataset, train=True, ratio=1.0, batch_size=128):
     elif dataset == 'mnistm':
         dataset = CustomMNISTMDataSet(data_root, train, transform)
     elif dataset == 'asl' or dataset == 'caltech':
-        dataset = get_custom_folder(data_root, train, transform)
+        dataset = get_custom_folder(data_root + '/' + str(dataset), train, transform)
     else:
         raise Exception('Invalid dataset')
     if ratio < 1:

@@ -121,7 +121,7 @@ class CustomMNISTMDataSet(data.Dataset):
     def __init__(self, data_file, is_train=False, transform=False):
         self.transform = transform
 
-        f = h5py.File(data_file, 'r')
+        f = h5py.File(data_file + '/mnistm.h5', 'r')
         data = f['data']
 
         if is_train:
