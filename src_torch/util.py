@@ -7,7 +7,7 @@ from torchvision import datasets, models, transforms
 
 from dataset import CelebA_attr, GTSRB, CustomGTSRBDataSet
 #from network import resnet18
-from resnet_cifar import resnet18
+from resnet_cifar import resnet18, resnet50
 from vgg_cifar import vgg11_bn
 from mobilenetv2 import MobileNetV2
 
@@ -131,9 +131,10 @@ def get_model(args):
             model = models.vgg16(pretrained=True)
         elif args.model == 'resnet50':
             model = models.resnet50(pretrained=True)
-
     if args.model == 'resnet18':
         model = resnet18()
+    elif args.model == 'resnet50':
+        model = resnet50()
     elif args.model == 'vgg11_bn':
         if args.dataset == 'gtsrb':
             model = vgg11_bn(num_classes=43)
