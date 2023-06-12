@@ -132,15 +132,16 @@ def get_dataloader(dataset, train=True, ratio=1.0, batch_size=128):
         dataset = CelebA_attr(data_root, train, transform)
     elif dataset == 'mnistm':
         dataset = CustomMNISTMDataSet(data_root, train, transform)
-    elif dataset == 'asl' or dataset == 'caltech':
-        if dataset == 'caltech':
-            transforms_list = []
-            transforms_list.append(transforms.ToTensor())
+    elif dataset == 'asl':
+        dataset = get_custom_folder(data_root + '/' + str(dataset), train, transform)
+    elif dataset == 'caltech':
+        my_trans = transforms.Compose([
             transforms.Resize(size=256),
             transforms.CenterCrop(size=224),
-            # transforms_list.append(transforms.Normalize(_mean[dataset], _std[dataset]))
-            transform = transforms.Compose(transforms_list)
-        dataset = get_custom_folder(data_root + '/' + str(dataset), train, transform)
+            transforms.ToTensor(),
+            transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+        ])
+        dataset = get_custom_folder(data_root + '/' + str(dataset), train, my_trans)
     else:
         raise Exception('Invalid dataset')
     if ratio < 1:

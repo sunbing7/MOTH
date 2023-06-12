@@ -52,7 +52,7 @@ def moth():
                                 nesterov=True)
 
     # load data
-    train_loader = get_dataloader(args.dataset,  True, args.data_ratio)
+    train_loader = get_dataloader(args.dataset, True, args.data_ratio)
     test_loader  = get_dataloader(args.dataset, False, 0.05)
 
     # a subset for loss calculation during warmup
