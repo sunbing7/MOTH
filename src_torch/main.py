@@ -62,7 +62,7 @@ def moth():
         else:
             x_extra = torch.cat((x_extra, x_batch))
             y_extra = torch.cat((y_extra, y_batch))
-        if idx > 3:
+        if idx > 3 and args.dataset != 'caltech' and args.dataset != 'asl':
             break
 
     num_samples = 10
