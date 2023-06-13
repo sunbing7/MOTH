@@ -65,13 +65,13 @@ python src_torch/main.py --phase=moth --suffix=black_adv --lr=0.0000003 --datase
 
 #asl
 #A
-python src_torch/main.py --phase=moth --suffix=A_adv --lr=0.0000001 --dataset=asl --model=MobileNet --type=adv --batch_size=64 --epochs=2
-python src_torch/main.py --phase=moth --suffix=A_adv --lr=0.0000002 --dataset=asl --model=MobileNet --type=adv --batch_size=64 --epochs=2
-python src_torch/main.py --phase=moth --suffix=A_adv --lr=0.0000003 --dataset=asl --model=MobileNet --type=adv --batch_size=64 --epochs=2
+python src_torch/main.py --phase=moth --suffix=A_adv --lr=0.0000001 --dataset=asl --model=MobileNet --type=adv --batch_size=64 --epochs=2 --data_ratio=0.05
+python src_torch/main.py --phase=moth --suffix=A_adv --lr=0.0000002 --dataset=asl --model=MobileNet --type=adv --batch_size=64 --epochs=2 --data_ratio=0.05
+python src_torch/main.py --phase=moth --suffix=A_adv --lr=0.0000003 --dataset=asl --model=MobileNet --type=adv --batch_size=64 --epochs=2 --data_ratio=0.05
 #Z
-python src_torch/main.py --phase=moth --suffix=Z_adv --lr=0.0000001 --dataset=asl --model=MobileNet --type=adv --batch_size=64 --epochs=2
-python src_torch/main.py --phase=moth --suffix=Z_adv --lr=0.0000002 --dataset=asl --model=MobileNet --type=adv --batch_size=64 --epochs=2
-python src_torch/main.py --phase=moth --suffix=Z_adv --lr=0.0000003 --dataset=asl --model=MobileNet --type=adv --batch_size=64 --epochs=2
+python src_torch/main.py --phase=moth --suffix=Z_adv --lr=0.0000001 --dataset=asl --model=MobileNet --type=adv --batch_size=64 --epochs=2 --data_ratio=0.05
+python src_torch/main.py --phase=moth --suffix=Z_adv --lr=0.0000002 --dataset=asl --model=MobileNet --type=adv --batch_size=64 --epochs=2 --data_ratio=0.05
+python src_torch/main.py --phase=moth --suffix=Z_adv --lr=0.0000003 --dataset=asl --model=MobileNet --type=adv --batch_size=64 --epochs=2 --data_ratio=0.05
 
 #caltech
 #brain

@@ -145,7 +145,9 @@ def get_dataloader(dataset, train=True, ratio=1.0, batch_size=128):
     else:
         raise Exception('Invalid dataset')
     if ratio < 1:
-        indices = np.arange(int(len(dataset) * ratio))
+        #indices = np.arange(int(len(dataset) * ratio))
+        indices = np.random.choice(int(len(dataset)),
+                         size=int(ratio * len(dataset)), replace=False)
         dataset = torch.utils.data.Subset(dataset, indices)
     dataloader = torch.utils.data.DataLoader(dataset, batch_size=batch_size,
                                              num_workers=6, shuffle=train)
