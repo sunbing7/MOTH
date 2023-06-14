@@ -52,8 +52,8 @@ def moth():
                                 nesterov=True)
 
     # load data
-    train_loader = get_dataloader(args.dataset, True, args.data_ratio)
-    test_loader  = get_dataloader(args.dataset, False, 0.05)
+    train_loader = get_dataloader(args.dataset, True, args.data_ratio, batch_size=args.batch_size)
+    test_loader  = get_dataloader(args.dataset, False, 0.05, batch_size=args.batch_size)
 
     # a subset for loss calculation during warmup
     for idx, (x_batch, y_batch) in enumerate(train_loader):
@@ -420,6 +420,7 @@ def moth():
 
             # train model
             optimizer.zero_grad()
+
             output = model(x_batch)
             loss = criterion(output, y_batch.to(args.device))
             loss.backward()
@@ -479,7 +480,7 @@ def test():
     model.to(args.device)
     model.eval()
 
-    test_loader = get_dataloader(args.dataset, False)
+    test_loader = get_dataloader(args.dataset, False, batch_size=args.batch_size)
 
     total   = 0
     correct = 0
@@ -583,7 +584,7 @@ def validate():
     model.eval()
 
     # load data
-    test_loader = get_dataloader(args.dataset, False)
+    test_loader = get_dataloader(args.dataset, False, batch_size=args.batch_size)
     num_classes = get_num(args.dataset)
 
     for batch_idx, (inputs, targets) in enumerate(test_loader):
