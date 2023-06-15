@@ -2,13 +2,13 @@
 
 #gtsrb
 #dtl
-python src_torch/main.py --phase=moth --suffix=dtl_adv --lr=0.00000001 --dataset=gtsrb --model=vgg11_bn --type=adv --batch_size=64 --epochs=2
-python src_torch/main.py --phase=moth --suffix=dtl_adv --lr=0.000000001 --dataset=gtsrb --model=vgg11_bn --type=adv --batch_size=64 --epochs=2
+python src_torch/main.py --phase=moth --suffix=dtl_adv --lr=0.00000001 --dataset=gtsrb --model=vgg11_bn --type=adv --batch_size=128 --epochs=2
+python src_torch/main.py --phase=moth --suffix=dtl_adv --lr=0.000000001 --dataset=gtsrb --model=vgg11_bn --type=adv --batch_size=128 --epochs=2
 
 
 #dkl
-python src_torch/main.py --phase=moth --suffix=dkl_adv --lr=0.00000001 --dataset=gtsrb --model=vgg11_bn --type=adv --batch_size=64 --epochs=2
-python src_torch/main.py --phase=moth --suffix=dkl_adv --lr=0.000000001 --dataset=gtsrb --model=vgg11_bn --type=adv --batch_size=64 --epochs=2
+python src_torch/main.py --phase=moth --suffix=dkl_adv --lr=0.00000001 --dataset=gtsrb --model=vgg11_bn --type=adv --batch_size=128 --epochs=2
+python src_torch/main.py --phase=moth --suffix=dkl_adv --lr=0.000000001 --dataset=gtsrb --model=vgg11_bn --type=adv --batch_size=128 --epochs=2
 
 
 #asl
