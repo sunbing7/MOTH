@@ -97,6 +97,18 @@ class CustomGTSRBDataSet(data.Dataset):
         x_train = x_train.astype("float32")
         x_test = x_test.astype("float32")
 
+        # shuffle
+        # randomize
+        idx = np.arange(len(x_train))
+        np.random.shuffle(idx)
+        x_train = x_train[idx]
+        y_train = y_train[idx]
+
+        idx = np.arange(len(x_test))
+        np.random.shuffle(idx)
+        x_test = x_test[idx]
+        y_test = y_test[idx]
+
         if is_train:
             self.x = x_train
             self.y = y_train
